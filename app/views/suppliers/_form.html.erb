@@ -1,0 +1,57 @@
+  <%= form_with(model: @supplier) do |f| %>
+    <% if @supplier.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@supplier.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+        <ul>
+          <% @supplier.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+<div class="row justify-content-center">
+  <div class="col-md-8 mb-4">
+    <div class="card mb-4">
+      <div class="card-header py-3">
+        <h5 class="mb-0">Supplier Information</h5>
+      </div>
+      <div class="card-body">
+
+          <div class="form-outline mb-4">
+            <%= f.text_field :name, class:"form-control", id:"floatingInputname", placeholder:"name" %>
+            <label class="form-label" for="form7Example3">Company / Supplier name</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <%= f.text_field :email, class:"form-control", id:"floatingemail", placeholder:"email" %>
+            <label class="form-label" for="form7Example4">Email</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <%= f.text_field :address, class:"form-control", id:"floatingaddress", placeholder:"address" %>
+            <label class="form-label" for="form7Example5">Address</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <%= f.text_field :phone_number, class:"form-control", id:"floatingphonenumber", placeholder:"phone number" %>
+            <label class="form-label" for="form7Example6">Phone Number</label>
+          </div>
+
+          <div class="form-outline mb-4">
+            <%= f.text_field :telephone, class:"form-control", id:"floatingTelephone", placeholder:"Telephone" %>
+            <label class="form-label" for="form7Example7">Telephone</label>
+          </div>
+
+
+          <div class="form-outline mb-4">
+            <%= f.file_field :image %>
+          </div>
+
+          <div class="form-check d-flex justify-content-center mb-2">
+            <%= f.submit "Save", class:"btn btn-primary btn-login" %>
+          </div>
+      </div>
+    </div>
+  </div>
+<% end %>

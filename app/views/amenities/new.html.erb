@@ -1,0 +1,37 @@
+  <%= form_with(model: [@supplier, @amenity]) do |f| %>
+    <% if @amenity.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@amenity.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+        <ul>
+          <% @amenity.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="card w-50">
+    <div class="card-header">
+      <strong>Add Amenity</strong>
+    </div>
+    <div class="card-body card-block">
+    <form action="" method="post" class="form-horizontal">
+      <div class="row form-group">
+        <div class="col col-md-3">
+          <%= f.label :name, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.text_field :name, class:"form-control", id:"hf-name", placeholder:"name"  %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.file_field :image %>
+        </div>
+      </div>
+      <br/>
+    </form>
+    </div>
+    <div class="card-footer">
+      <%= f.submit "Save", class:"btn btn-primary btn-sm" %>
+    </div>
+  </div>
+<% end %>

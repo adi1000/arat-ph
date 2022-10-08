@@ -1,0 +1,37 @@
+        <form>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example3">Product Name :</label>
+            <%= @product.name %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example4">Vehicle Type :</label>
+            <%= @product.product_type %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example5">Plate Number :</label>
+            <%= @product.plate_number %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example6">Registration Date :</label>
+            <%= @product.registration_date %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example7">Telephone :</label>
+            <%= @supplier.telephone %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example7">Vehicle Registration Certificate :</label>
+            <% if @product.image.present?%>
+              <%= image_tag @product&.image.variant(resize_to_fill: [50, nil])  %>
+            <% end %>
+          </div>
+
+          <div>
+            <%= link_to "Edit", edit_supplier_product_path, class:"btn btn-primary" %>
+          </div>
+        </form>

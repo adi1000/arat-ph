@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-8 mb-4">
+    <div class="card mb-4">
+      <div class="card-header py-3">
+        <h5 class="mb-0"></h5>
+      </div>
+      <div class="card-body">
+        <form>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example3">Company / Supplier name :</label>
+            <%= @supplier.name %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example4">Email :</label>
+            <%= @supplier.email %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example5">Address :</label>
+            <%= @supplier.address %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example6">Phone Number :</label>
+            <%= @supplier.phone_number %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example7">Telephone :</label>
+            <%= @supplier.telephone %>
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form7Example7">Company Logo :</label>
+            <% if @supplier.image.present?%>
+              <%= image_tag @supplier&.image.variant(resize_to_fill: [50, nil])  %>
+            <% end %>
+          </div>
+
+          <div>
+            <%= link_to "Edit", edit_supplier_path, class:"btn btn-primary" %>
+            <%= link_to "Back", suppliers_path, class:"btn btn-dark" %>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+

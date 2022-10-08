@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AratApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <%= render "layouts/navbar"%>
+  <% if current_user.present? %>
+
+    <div class="container-fluid">
+      <div class="row">
+        <%= render "layouts/sidebar" %>
+        <%= render 'layouts/main' %>
+      </div>
+    </div>
+  <% else %>
+<% if flash[:notice].present? %>
+  <div class="alert alert-info">
+    <span class="glyphicon glyphicon-info-sign"></span>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:alert].present? %>
+  <div class="alert alert-danger">
+    <span class="glyphicon glyphicon-exclamation-sign"></span>
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+    <%= yield %>
+  <% end %>
+  </body>
+</html>

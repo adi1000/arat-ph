@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-between mb-1">
+  <%= link_to 'Add Package', new_supplier_package_path, class: "btn btn-success btn-sm" %>
+</div>
+<div class="container">
+  <div class="row justify-content-start">
+    <% @packages.each do |package| %>
+      <div class="col-4 mb-3">
+        <div class="card text-center bg-white pb-2">
+          <div class="card-body text-dark">
+                     <% if package.image.present?%>
+            <%= image_tag package&.image.variant(resize_to_fill: [100, nil])  %>
+          <% end %>
+            <h3 class="card-title"><%= package.name %></h3>
+            <%= link_to '', edit_supplier_package_path(@supplier, package), class:"bi bi-pencil text-primary" %>
+            <%= link_to '',supplier_package_path(@supplier, package), class:"bi bi-trash text-danger", data: { "turbo-method": :delete }%>
+            <%= link_to '',supplier_package_path(@supplier, package), class:"bi bi-eye-fill" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

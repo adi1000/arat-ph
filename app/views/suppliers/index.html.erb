@@ -1,0 +1,63 @@
+<div class="table-wrapper">
+  <div class="table-title">
+    <%= search_form_for @q do |f| %>
+    <div class="d-flex justify-content-between mb-1">
+        <%= link_to 'Add Supplier', new_supplier_path, class:"btn btn-success btn-sm" %>
+        <%= f.search_field :name_or_address_or_email_or_phone_number_or_telephone_cont, class:"ms-auto bd-highlight"%>
+        <%= f.submit 'Search Supplier'%>
+      </div>
+    <% end %>
+  </div>
+  <table class="table table-bordered">
+      <thead class="bg-light">
+          <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Telephone</th>
+            <th>Company Logo</th>
+            <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @suppliers.each do |supplier| %>
+          <tr>
+            <td scope="row">
+              <%= supplier.id %>
+            </td>
+            <td scope="row">
+              <%= supplier.email %>
+            </td>
+            <td scope="row">
+              <%= supplier.name %>
+            </td>
+            <td scope="row">
+              <%= supplier.address %>
+            </td>
+            <td scope="row">
+              <%= supplier.phone_number %>
+            </td>
+            <td scope="row">
+              <%= supplier.telephone %>
+            </td>
+            <td scope="row">
+            <% if supplier.image.present?%>
+            <%= image_tag supplier&.image.variant(resize_to_fill: [50, nil])  %>
+            <% end %>
+            </td>
+            <td scope="row">
+              <%= link_to '', edit_supplier_path(supplier), class:"bi bi-pencil" %>
+              <%= link_to '', supplier_url(supplier), class:"bi bi-trash text-danger", data: { "turbo-method": :delete }%>
+              <%= link_to '', supplier_path(supplier), class:"bi bi-envelope-open-fill" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
+</div>
+

@@ -1,0 +1,73 @@
+<div class="table-wrapper">
+  <div class="table-title">
+    <%= search_form_for @q, url: supplier_products_path(@supplier) do |f| %>
+     <div class="d-flex justify-content-between mb-1">
+        <%= link_to 'Add Product', new_supplier_product_path, class: "btn btn-success btn-sm" %>
+        <%= f.search_field :name_or_plate_number_cont, class:"ms-auto bd-highlight" %>
+        <%= f.submit 'Search Supplier'%>
+      </div>
+    <% end %>
+  </div>
+  <table class="table table-bordered">
+      <thead class="bg-light">
+          <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Vehicle Type</th>
+              <th>Plate Number</th>
+              <th>Registration Date</th>
+              <th>Vehicle Registration Certificate</th>
+              <th>Capacity</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td scope="row">
+              <%= product.id %>
+            </td>
+            <td scope="row">
+              <%= product.name %>
+            </td>
+            <td scope="row">
+              <%= product.product_type %>
+            </td>
+            <td scope="row">
+              <%= product.plate_number %>
+            </td>
+            <td scope="row">
+              <%= product.registration_date %>
+            </td>
+            <td scope="row">
+              <% if product.image.present?%>
+              <%= image_tag product&.image.variant(resize_to_fill: [50, nil])  %>
+              <% end %>
+            </td>
+            <td scope="row">
+              <%= product.capacity %>
+            </td>
+            <td scope="row ">
+              <%= link_to '', edit_supplier_product_path(@supplier, product), class:"bi bi-pencil text-primary" %>
+              <%= link_to '',supplier_product_path(@supplier, product), class:"bi bi-trash text-danger", data: { "turbo-method": :delete }%>
+              <%= link_to '',supplier_product_path(@supplier, product), class:"bi bi-envelope-open-fill" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+    <div class="d-flex justify-content-center">
+      <%== pagy_bootstrap_nav(@pagy)%>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

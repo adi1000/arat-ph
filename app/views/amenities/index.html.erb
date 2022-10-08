@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between mb-1">
+  <%= link_to 'Add Amenity', new_supplier_amenity_path, class: "btn btn-success btn-sm" %>
+</div>
+<table class="table table-bordered">
+  <thead class="bg-light">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Actions</th>
+      <th>image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @amenities.each do |amenity| %>
+      <tr>
+        <td scope="row">
+          <%= amenity.id %>
+        </td>
+        <td scope="row">
+          <%= amenity.name %>
+        </td>
+        <td scope="row">
+          <%= link_to '', edit_supplier_amenity_path(@supplier, amenity), class:"bi bi-pencil text-primary" %>
+          <%= link_to '', supplier_amenity_path(@supplier, amenity), class:"bi bi-trash text-danger", data: { "turbo-method": :delete }%>
+          <%= link_to '', supplier_amenity_path(@supplier, amenity), class:"bi bi-envelope-open-fill" %>
+        </td>
+        <td scope="row">
+          <% if amenity.image.present?%>
+            <%= image_tag amenity&.image.variant(resize_to_fill: [50, nil])  %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

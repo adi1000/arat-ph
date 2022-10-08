@@ -1,0 +1,10 @@
+.bg-image-authentication {
+  background-image: url('joshua-rondeau-EIeVusiphj4-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+.arat {
+  margin-top: 250px;
+}

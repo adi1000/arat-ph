@@ -1,0 +1,35 @@
+  <%= form_with(model: [@supplier, @package]) do |f| %>
+    <% if @package.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@package.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+        <ul>
+          <% @package.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+<div class="row justify-content-center">
+  <div class="col-md-8 mb-4">
+    <div class="card mb-4">
+      <div class="card-header py-3">
+        <h5 class="mb-0">Package Edit</h5>
+      </div>
+      <div class="card-body">
+
+          <div class="form-outline mb-4">
+            <%= f.text_field :name, class:"form-control", id:"floatingInputname", placeholder:"name" %>
+            <label class="form-label" for="form7Example3">Package name</label>
+          </div>
+          <div class="form-outline mb-4">
+            <%= f.file_field :image %>
+          </div>
+
+          <div class="form-check d-flex justify-content-center mb-2">
+            <%= f.submit "Save", class:"btn btn-primary btn-login" %>
+          </div>
+      </div>
+    </div>
+  </div>
+<% end %>

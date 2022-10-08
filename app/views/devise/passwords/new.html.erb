@@ -1,0 +1,27 @@
+ <div class="container-fluid bg-image-authentication">
+  <div class="row">
+    <div class="col-xxl-4 col-xl-4 col-md-3 col-sm-3 col-xs-12"></div>
+      <div class="col-xxl-4 col-xl-4 col-md-6 col-sm-6 col-xs-12">
+        <div class="arat border-secondary rounded-3 bg-light bg-gradient text-dark px-5 pb-5">
+          <div class="text-center py-2">
+           <h1 class="mb-0 pt-2">Reset Password</h1>
+          </div>
+          <form class="text-center">
+          <p>Enter your email and we'll send you instructions to reset your password</p>
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="mb-3">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"Email" %>
+          </div>
+          <div class="mb-3">
+            <%= f.submit "Reset password", class:"btn btn-success  w-100" %>
+          </div>
+          <% end %>
+          </form>
+        </div>
+      </div>
+      <div class="col-xxl-4 col-xl-4 col-md-3 col-sm-3 col-xs-12"></div>
+    </div>
+  </div>
+
+

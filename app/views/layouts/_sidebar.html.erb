@@ -1,0 +1,18 @@
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  <div class="position-sticky pt-3">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <%= link_to 'Supplier', supplier_path(current_user.supplier), class:"nav-link #{current_class?(supplier_path(current_user.supplier))}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Products', supplier_products_path(current_user.supplier), class:"nav-link #{current_class?(supplier_products_path(current_user.supplier))}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Packages', supplier_packages_path(current_user.supplier), class:"nav-link #{current_class?(supplier_packages_path(current_user.supplier))}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Amenities', supplier_amenities_path(current_user.supplier), class:"nav-link #{current_class?(supplier_amenities_path(current_user.supplier))}" %>
+      </li>
+    </ul>
+  </div>
+</nav>
