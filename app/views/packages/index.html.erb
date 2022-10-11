@@ -10,10 +10,14 @@
                      <% if package.image.present?%>
             <%= image_tag package&.image.variant(resize_to_fill: [100, nil])  %>
           <% end %>
-            <h3 class="card-title"><%= package.name %></h3>
+            <h1 class="card-title"><%= package.name %></h1>
+            <h6><%= package.description %></h6>
             <%= link_to '', edit_supplier_package_path(@supplier, package), class:"bi bi-pencil text-primary" %>
             <%= link_to '',supplier_package_path(@supplier, package), class:"bi bi-trash text-danger", data: { "turbo-method": :delete }%>
             <%= link_to '',supplier_package_path(@supplier, package), class:"bi bi-eye-fill" %>
+            <%= content_tag :span, class: "badge #{package_status(package.status)}" do %>
+              <%=package.status %>
+            <% end %>
           </div>
         </div>
       </div>

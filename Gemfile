@@ -79,3 +79,5 @@ end
 gem "ransack", "~> 3.2"
 gem 'pagy'
 
+
+gem "ruby-lsp", "~> 0.3.3", :group => :development

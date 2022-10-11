@@ -18,13 +18,49 @@
     <form action="" method="post" class="form-horizontal">
       <div class="row form-group">
         <div class="col col-md-3">
-          <%= f.label :name, for:"hf-email" %>
+          <%= f.label :name %>
         </div>
         <div class="col-12 col-md-9">
           <%= f.text_field :name, class:"form-control mb-2", id:"hf-name", placeholder:"name"  %>
         </div>
         <div class="col col-md-3">
-          <%= f.label :amenities, for:"hf-email" %>
+          <%= f.label :description %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.text_field :description, class:"form-control mb-2", id:"hf-description", placeholder:"description"  %>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :package_type %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.select( :package_type, options_for_select(Package::PACKAGE_TYPE, selected: @package.package_type || nil),{:include_blank => "Select Package type"})%>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :min_quantity %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.number_field :min_quantity, class:"form-control mb-2 mt-2" %>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :max_quantity %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.number_field :max_quantity, class:"form-control mb-2 mt-2" %>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :price_per_head %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.number_field :price_per_head, class:"form-control mb-2 mt-2", step: :any %>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :status %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.select( :status, options_for_select(Package::STATUS, selected: @package.status || nil),{:include_blank => "Select Status"})%>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :amenities %>
         </div>
         <div class="col-12 col-md-9">
           <%= f.collection_check_boxes(:amenity_ids, current_user.supplier.amenities, :id, :name) do |a| %>
@@ -37,6 +73,21 @@
         <% end %>
       </div>
       <% end %>
+        </div>
+          <div class="col col-md-3">
+            <%= f.label :products %>
+          </div>
+          <div class="col-12 col-md-9">
+            <%= f.collection_check_boxes(:product_ids, current_user.supplier.products, :id, :name) do |a| %>
+          <div class="row">
+            <%= a.label(class: "check_box") do %>
+          <div class="col-xs-4">
+            <%= a.check_box(class: "check_box") %>
+            <%= a.object.name %>
+          </div>
+            <% end %>
+          </div>
+        <% end %>
         </div>
         <div class="col col-md-3">
           <%= f.file_field :image %>

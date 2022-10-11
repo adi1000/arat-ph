@@ -4,18 +4,52 @@
       <label class="form-label" for="form7Example3">Package name :</label>
       <%= @package.name %>
     </div>
-
     <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">Package type :</label>
+      <%= @package.package_type %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">Minimum quantity :</label>
+      <%= @package.min_quantity %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">Maximum quantity :</label>
+      <%= @package.max_quantity %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">Price/Perhead :</label>
+      <%= @package.price_per_head %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">total/minprice :</label>
+      <%= @package.total_min_price %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">total/maxprice :</label>
+      <%= @package.total_max_price %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">Aminities :</label>
       <% @package.amenities.each do |a| %>
         <%= a.name %>
       <% end %>
     </div>
-        <div class="form-outline mb-4">
-            <label class="form-label" for="form7Example7">Company Logo :</label>
-            <% if @package.image.present?%>
-              <%= image_tag @package&.image.variant(resize_to_fill: [50, nil])  %>
-            <% end %>
-          </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">Service :</label>
+      <% @package.products.each do |a| %>
+        <%= a.name %>
+      <% end %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example7">Spot image :</label>
+        <% if @package.image.present?%>
+          <%= image_tag @package&.image.variant(resize_to_fill: [50, nil])  %>
+        <% end %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">Status :</label>
+      <%= @package.status %>
+    </div>
 
   <div>
     <%= link_to 'Edit', edit_supplier_package_path(@supplier, @package), class:"btn btn-primary btn-sm" %>
