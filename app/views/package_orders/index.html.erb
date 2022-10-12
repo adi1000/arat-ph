@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between mb-1">
+  <%= link_to 'Add Package Order', new_package_order_path, class: "btn btn-success btn-sm" %>
+</div>
+<div class="table-wrapper">
+  <table class="table table-bordered">
+      <thead class="bg-light">
+          <tr>
+              <th>#</th>
+              <th>Purchase Quantity</th>
+              <th>Package Purchase</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% @package_orders.each do |package_order| %>
+          <tr>
+            <td scope="row">
+              <%= package_order.id %>
+            </td>
+            <td scope="row">
+              <%= package_order.purchase_quantity %>
+            </td>
+            <td scope="row">
+              <%= package_order.package.name %>
+            </td>
+            <td scope="row">
+            <%= link_to '', edit_package_order_path(package_order), class:"bi bi-pencil text-primary" %>
+            <%= link_to '', package_orders_path(package_order), class:"bi bi-trash text-danger", data: { "turbo-method": :delete }%>
+            <%= link_to '', package_order_path(package_order), class:"bi bi-eye-fill" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>

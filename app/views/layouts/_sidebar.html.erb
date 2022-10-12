@@ -13,6 +13,9 @@
       <li class="nav-item">
         <%= link_to 'Amenities', supplier_amenities_path(current_user.supplier), class:"nav-link #{current_class?(supplier_amenities_path(current_user.supplier))}" %>
       </li>
+      <li class="nav-item">
+        <%= link_to 'Package Orders', package_orders_path(current_user.supplier), class:"nav-link #{current_class?(package_orders_path(current_user.supplier))}" %>
+      </li>
     </ul>
   </div>
 </nav>

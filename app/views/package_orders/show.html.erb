@@ -1,0 +1,15 @@
+
+ <form>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">purchase quantity :</label>
+      <%= @package_order.purchase_quantity %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">total purchase price :</label>
+      <%= @package_order.total_package_price %>
+    </div>
+  <div>
+    <%= link_to 'Edit', edit_package_order_path(@package_order), class:"btn btn-primary btn-sm" %>
+    <%= link_to 'Back', package_orders_path(@package_order), class:"btn btn-dark btn-sm" %>
+  </div>
+</form>

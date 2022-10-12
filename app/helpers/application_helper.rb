@@ -10,6 +10,8 @@ module ApplicationHelper
       "Packages"
     elsif controller.controller_name == "amenities"
       "Amenities"
+    elsif controller.controller_name == "package_orders"
+      "Package Orders"
     else
       ""
     end

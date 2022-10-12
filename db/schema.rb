@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_062839) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_010125) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_062839) do
     t.datetime "updated_at", null: false
     t.index ["amenity_id"], name: "index_package_amenities_on_amenity_id"
     t.index ["package_id"], name: "index_package_amenities_on_package_id"
+  end
+
+  create_table "package_orders", force: :cascade do |t|
+    t.integer "purchase_quantity"
+    t.bigint "package_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["package_id"], name: "index_package_orders_on_package_id"
   end
 
   create_table "packages", force: :cascade do |t|
@@ -146,6 +154,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_062839) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "package_orders", "packages"
   add_foreign_key "products", "suppliers"
   add_foreign_key "suppliers", "users"
 end

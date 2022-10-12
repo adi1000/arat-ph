@@ -1,0 +1,41 @@
+  <%= form_with(model: @package_order) do |f| %>
+    <% if @package_order.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@package_order.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+        <ul>
+          <% @package_order.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="card w-50">
+    <div class="card-header">
+      <strong>Add Package Order</strong>
+    </div>
+    <div class="card-body card-block">
+    <form action="" method="post" class="form-horizontal">
+      <div class="row form-group">
+        <div class="col col-md-3">
+          <%= f.label :purchase_quantity, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.number_field :purchase_quantity, class:"form-control", id:"hf-name", placeholder:"name"  %>
+        </div>
+        <div class="col col-md-3">
+            <%= f.label :packages %>
+          </div>
+          <div class="col-12 col-md-9">
+             <%= f.select( :package_id, current_user.supplier.packages.collect{|p| [p.name, p.id]},{:include_blank => "Select Status"})%>
+        </div>
+      </div>
+      <br/>
+    </form>
+    </div>
+    <div class="card-footer">
+      <%= f.submit "Save", class:"btn btn-primary btn-sm" %>
+      <%= link_to 'back', package_orders_url, class:"btn btn-danger btn-sm" %>
+    </div>
+  </div>
+<% end %>

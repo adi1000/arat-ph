@@ -29,6 +29,10 @@
       <%= @package.total_max_price %>
     </div>
     <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">total/purchase :</label>
+      <%= @package.total_purchase_orders %>
+    </div>
+    <div class="form-outline mb-4">
       <label class="form-label" for="form7Example3">Aminities :</label>
       <% @package.amenities.each do |a| %>
         <%= a.name %>
