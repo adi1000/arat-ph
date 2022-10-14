@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :packages
   end
 
+  resources :tourist_spots
+
   resources :package_orders
   # Defines the root path route ("/")
   root "suppliers#index"

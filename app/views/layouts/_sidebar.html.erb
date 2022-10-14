@@ -14,7 +14,10 @@
         <%= link_to 'Amenities', supplier_amenities_path(current_user.supplier), class:"nav-link #{current_class?(supplier_amenities_path(current_user.supplier))}" %>
       </li>
       <li class="nav-item">
-        <%= link_to 'Package Orders', package_orders_path(current_user.supplier), class:"nav-link #{current_class?(package_orders_path(current_user.supplier))}" %>
+        <%= link_to 'Package Orders', package_orders_path, class:"nav-link #{current_class?(package_orders_path)}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Tourist Spots', tourist_spots_path, class:"nav-link #{current_class?(tourist_spots_path)}" %>
       </li>
     </ul>
   </div>

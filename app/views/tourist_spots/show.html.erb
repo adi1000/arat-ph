@@ -1,0 +1,14 @@
+ <form>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">name :</label>
+      <%= @tourist_spot.name %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">description :</label>
+      <%= @tourist_spot.description %>
+    </div>
+  <div>
+    <%= link_to 'Edit', edit_tourist_spot_path(@tourist_spot), class:"btn btn-primary btn-sm" %>
+    <%= link_to 'Back', tourist_spots_path(@tourist_spot), class:"btn btn-dark btn-sm" %>
+  </div>
+</form>

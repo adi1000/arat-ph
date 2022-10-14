@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_010125) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_14_074226) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -124,6 +124,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_010125) do
     t.index ["user_id"], name: "index_suppliers_on_user_id"
   end
 
+  create_table "tourist_destinations", force: :cascade do |t|
+    t.bigint "tourist_spot_id"
+    t.bigint "package_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["package_id"], name: "index_tourist_destinations_on_package_id"
+    t.index ["tourist_spot_id"], name: "index_tourist_destinations_on_tourist_spot_id"
+  end
+
+  create_table "tourist_spots", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "package_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["package_id"], name: "index_tourist_spots_on_package_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -157,4 +175,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_010125) do
   add_foreign_key "package_orders", "packages"
   add_foreign_key "products", "suppliers"
   add_foreign_key "suppliers", "users"
+  add_foreign_key "tourist_spots", "packages"
 end

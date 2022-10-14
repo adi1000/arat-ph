@@ -1,0 +1,48 @@
+
+<div class="d-flex justify-content-between mb-1">
+  <%= link_to 'Add Tourist Spot', new_tourist_spot_path, class: "btn btn-success btn-sm" %>
+</div>
+<table class="table table-bordered">
+  <thead class="bg-light">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Package Name</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tourist_spots.each do |tourist_spot| %>
+      <tr>
+        <td scope="row">
+          <%= tourist_spot.id %>
+        </td>
+        <td scope="row">
+          <%= tourist_spot.name %>
+        </td>
+        <td scope="row">
+          <%= tourist_spot.description %>
+        </td>
+        <td scope="row">
+          <%= tourist_spot.packages.each do |package| %>
+              <%= package.name %>
+          <% end %>
+        </td>
+        <td scope="row">
+        <% if tourist_spot.images.present?%>
+          <% (0...tourist_spot.images.count).each do |image| %>
+            <%= image_tag(tourist_spot.images[image].variant(resize_to_fill: [100, nil]))%>
+          <% end %>
+        <% end %>
+        </td>
+        <td scope="row">
+          <%= link_to '', edit_tourist_spot_path(tourist_spot), class:"bi bi-pencil text-primary" %>
+          <%= link_to '', tourist_spot_path(tourist_spot), class:"bi bi-trash text-danger", data: { "turbo-method": :delete }%>
+          <%= link_to '', tourist_spot_path(tourist_spot), class:"bi bi-envelope-open-fill" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

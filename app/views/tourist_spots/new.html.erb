@@ -1,0 +1,50 @@
+  <%= form_with(model: @tourist_spot) do |f| %>
+    <% if @tourist_spot.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@tourist_spot.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+        <ul>
+          <% @tourist_spot.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="card w-50">
+    <div class="card-header">
+      <strong>New Tourist Spot</strong>
+    </div>
+    <div class="card-body card-block">
+    <form action="" method="post" class="form-horizontal">
+      <div class="row form-group">
+        <div class="col col-md-3">
+          <%= f.label :name, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.text_field :name, class:"form-control", id:"hf-name", placeholder:"name"  %>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :description, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9">
+          <%= f.text_field :description, class:"form-control", id:"hf-name", placeholder:"description"  %>
+        </div>
+        <div class="col col-md-3">
+            <%= f.label :packages %>
+        </div>
+        <div class="col-12 col-md-9">
+             <%= f.select( :package_ids, current_user.supplier.packages.collect{|p| [p.name, p.id]},{:include_blank => "Select Status"})%>
+        </div>
+        <div class="col col-md-3">
+          <%= f.file_field :images, multiple: true %>
+        </div>
+      </div>
+      <br/>
+    </form>
+    </div>
+    <div class="card-footer">
+      <%= f.submit "Save", class:"btn btn-primary btn-sm" %>
+      <%= link_to 'back', tourist_spots_url, class:"btn btn-danger btn-sm" %>
+    </div>
+  </div>
+<% end %>

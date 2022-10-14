@@ -1,5 +1,5 @@
 class PackageOrdersController < ApplicationController
-  before_action :set_package_order, only: %i[show edit update]
+  before_action :set_package_order, only: %i[show edit update destroy]
 
   def index
     @package_orders = PackageOrder.all
@@ -13,7 +13,7 @@ class PackageOrdersController < ApplicationController
 
   def update
     respond_to do |format|
-      @package_order = PackageOrders.find(params[:id])
+      @package_order = PackageOrder.find(params[:id])
       if @package_order.update(package_order_params)
         format.html do
           redirect_to package_orders_url,
@@ -41,11 +41,11 @@ class PackageOrdersController < ApplicationController
           redirect_to package_orders_url,
                       notice: "Subject was successfully created."
         end
-        format.json { render :show, status: :ok, location: category }
+        format.json { render :show, status: :ok, location: package_order }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json do
-          render json: category.errors, status: :unprocessable_entity
+          render json: package_order.errors, status: :unprocessable_entity
         end
       end
     end
@@ -53,7 +53,6 @@ class PackageOrdersController < ApplicationController
 
   def destroy
     @package_order.destroy
-
     redirect_to package_orders_url
   end
 

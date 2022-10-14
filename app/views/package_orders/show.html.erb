@@ -11,5 +11,6 @@
   <div>
     <%= link_to 'Edit', edit_package_order_path(@package_order), class:"btn btn-primary btn-sm" %>
     <%= link_to 'Back', package_orders_path(@package_order), class:"btn btn-dark btn-sm" %>
+    <%= link_to '', package_orders_path(@package_order), class:"bi bi-trash text-danger", data: { "turbo-method": :delete }%>
   </div>
 </form>

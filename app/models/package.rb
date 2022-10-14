@@ -7,6 +7,9 @@ class Package < ApplicationRecord
   has_many :product_packages
   has_many :products, through: :product_packages
 
+  has_many :tourist_destinations
+  has_many :tourist_spots, through: :tourist_destinations
+
   has_one_attached :image
 
   accepts_nested_attributes_for :package_amenities
