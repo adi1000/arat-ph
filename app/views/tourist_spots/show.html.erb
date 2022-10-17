@@ -4,9 +4,23 @@
       <%= @tourist_spot.name %>
     </div>
     <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">latitude :</label>
+      <%= @tourist_spot.latitude %>
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form7Example3">longitude :</label>
+      <%= @tourist_spot.longitude %>
+    </div>
+
+<p>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x300&center=#{@tourist_spot.latitude},#{@tourist_spot.longitude}&key=AIzaSyA6dfhg7x-Rh4fbryMIc6JEuwoKSIUlCXQ", alt: "Map" %>
+</p>
+
+    <div class="form-outline mb-4">
       <label class="form-label" for="form7Example3">description :</label>
       <%= @tourist_spot.description %>
     </div>
+
   <div>
     <%= link_to 'Edit', edit_tourist_spot_path(@tourist_spot), class:"btn btn-primary btn-sm" %>
     <%= link_to 'Back', tourist_spots_path(@tourist_spot), class:"btn btn-dark btn-sm" %>

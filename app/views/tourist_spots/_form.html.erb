@@ -1,0 +1,67 @@
+  <%= form_with(model: @tourist_spot, data: {
+                                                           controller: :maps,
+                                                           action: "google-maps-callback@window->maps#initializeMap" }
+                                                           ) do |f| %>
+    <% if @tourist_spot.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@tourist_spot.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+        <ul>
+          <% @tourist_spot.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="card w-50">
+    <div class="card-header">
+      <strong>New Tourist Spot</strong>
+    </div>
+    <div class="card-body card-block">
+      <div class="row form-group">
+        <div class="col col-md-3">
+          <%= f.label :name, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9 mb-2">
+          <%= f.text_field :name, class:"form-control", placeholder:"name"  %>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :address, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9 mb-2">
+          <%= f.search_field :address, name: nil, class:"form-control",  placeholder:"address", data: { target: "maps.field", action: "keydown->maos#preventSubmit" }  %>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :latitude, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9 mb-2">
+          <%= f.text_field :latitude, class:"form-control",  placeholder:"latitude", data: { target: "maps.latitude" }  %>
+        </div>
+        <div class="col col-md-3">
+          <%= f.label :longitude, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9 mb-2">
+          <%= f.text_field :longitude, class:"form-control",  placeholder:"longitude", data: { target: "maps.longitude" }  %>
+        </div>
+
+        <%= content_tag :div, nil, data: { target: "maps.map" }, class: "map"%>
+
+        <div class="col col-md-3">
+          <%= f.label :description, for:"hf-email" %>
+        </div>
+        <div class="col-12 col-md-9 mb-2 mt-2">
+          <%= f.text_field :description, class:"form-control",  placeholder:"description"  %>
+        </div>
+        </div>
+        <div class="col col-md-3">
+          <%= f.file_field :images, multiple: true %>
+        </div>
+      </div>
+      <br/>
+    </div>
+    <div class="card-footer w-50">
+      <%= f.submit "Save", class:"btn btn-primary btn-sm" %>
+      <%= link_to 'back', tourist_spots_url, class:"btn btn-danger btn-sm" %>
+    </div>
+  </div>
+<% end %>

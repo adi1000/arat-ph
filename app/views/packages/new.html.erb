@@ -90,6 +90,21 @@
         <% end %>
         </div>
         <div class="col col-md-3">
+            <%= f.label :tourist_spots %>
+          </div>
+          <div class="col-12 col-md-9">
+            <%= f.collection_check_boxes(:tourist_spot_ids, tourist_spots.all, :id, :name) do |a| %>
+          <div class="row">
+            <%= a.label(class: "check_box") do %>
+          <div class="col-xs-4">
+            <%= a.check_box(class: "check_box") %>
+            <%= a.object.name %>
+          </div>
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+        <div class="col col-md-3">
           <%= f.file_field :image %>
         </div>
       </div>

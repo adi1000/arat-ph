@@ -61,7 +61,7 @@ class TouristSpotsController < ApplicationController
   private
 
   def tourist_spot_params
-    params.require(:tourist_spot).permit(:name, :description, package_ids: [], images: [])
+    params.require(:tourist_spot).permit(:name, :description, :latitude, :longitude, :address, images: [])
   end
 
   def set_tourist_spot
