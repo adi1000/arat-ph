@@ -7,8 +7,9 @@
     <tr>
       <th>#</th>
       <th>Name</th>
+      <th>latitude</th>
+      <th>longitude</th>
       <th>Description</th>
-      <th>Package Name</th>
       <th>Image</th>
       <th>Actions</th>
     </tr>
@@ -23,12 +24,13 @@
           <%= tourist_spot.name %>
         </td>
         <td scope="row">
-          <%= tourist_spot.description %>
+          <%= tourist_spot.latitude %>
         </td>
         <td scope="row">
-          <%= tourist_spot.packages.each do |package| %>
-              <%= package.name %>
-          <% end %>
+          <%= tourist_spot.longitude %>
+        </td>
+        <td scope="row">
+          <%= tourist_spot.description %>
         </td>
         <td scope="row">
         <% if tourist_spot.images.present?%>

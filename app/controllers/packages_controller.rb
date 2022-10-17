@@ -73,7 +73,8 @@ class PackagesController < ApplicationController
       :price_per_head,
       :status,
       amenity_ids: [],
-      product_ids: []
+      product_ids: [],
+      tourist_spot_id: []
     )
   end
 
